@@ -13,6 +13,10 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
+# RethinkDB
+gem 'nobrainer'
+gem 'nobrainer_streams'
+
 group :development, :test do
   gem 'byebug', platform: :mri
 end
