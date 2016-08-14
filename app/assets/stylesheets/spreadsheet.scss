@@ -14,3 +14,36 @@
 .user-10 { @include colored-border(#cab2d6);}
 .user-11 { @include colored-border(#ffff99);}
 .user-12 { @include colored-border(#1f78b4);}
+
+body {
+  margin: 0 auto;
+  max-width: 50em;
+  font-family: "Helvetica", "Arial", sans-serif;
+  line-height: 1.5;
+  padding: 2em 2em;
+  display: flex;
+  flex-flow: row wrap;
+  background-color: #eeeeee;
+}
+
+section {
+  background-color: #fff;
+  padding: 1em;
+  margin: .3em;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+              0 1px 5px 0 rgba(0, 0, 0, 0.12),
+              0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+
+#active_users {
+  width: 14em;
+  order: 3;
+}
+
+#spreadsheet {
+  flex-grow: 1;
+  order: 2;
+  padding: 0;
+  overflow: hidden;
+  height: 30em;
+}
