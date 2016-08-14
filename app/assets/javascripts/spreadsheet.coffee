@@ -7,7 +7,7 @@ App.spreadsheet =
   new_user: (user) ->
     @active_users[user.id] = user
     @number_users()
-    @render_activer_users()
+    @render_active_users()
     @render_selected_cells()
 
   number_users: () ->
@@ -19,9 +19,9 @@ App.spreadsheet =
 
   remove_user: (user) ->
     delete @active_users[user.id]
-    @render_activer_users()
+    @render_active_users()
 
-  render_activer_users: () ->
+  render_active_users: () ->
     $('#active_users_list').html(
       ("<li class=\"user-#{user.num}\">#{user.id}</li>" for id,user of @active_users).join("")
     )
@@ -52,6 +52,12 @@ App.spreadsheet =
       contextMenu: true
       afterSelection: () => @select_cells(arguments)
       afterDeselect: () => @deselect_cells()
+      afterChange: (changes, source) =>
+        if source != 'remote' && changes
+          for change in changes
+            App.spread_sheet_cells.set_cell_value(
+              { r: change[0], c: change[1] },
+              change[3])
     )
 
   select_cells: (cells) -> 
@@ -59,5 +65,10 @@ App.spreadsheet =
 
   deselect_cells: () -> 
     App.active_users.select_cells(null)
+  
+  update_cell: (update) ->
+    location = update.location
+    value = update.value
+    @hot.setDataAtCell(location.r, location.c, value, 'remote')
 
 $ -> App.spreadsheet.setup()
