@@ -51,3 +51,4 @@ build-iPhoneSimulator/
 
 log/*
 rethinkdb_data
+.byebug_history
