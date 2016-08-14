@@ -1,5 +1,6 @@
 class SpreadsheetCell
   include NoBrainer::Document
-  field :location
+  field :location, primary_key: true
   field :value
+  field :lock
 end
