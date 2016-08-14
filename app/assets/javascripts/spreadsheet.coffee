@@ -103,7 +103,7 @@ MultiEditorPatch =
 
   finishEditing: (original) -> (restoreOriginalValue, ctrlDown, callback) ->
     if @instance.releaseEditLock && @state == 'STATE_EDITING'
-      @instace.releaseEditLock(@, => original.apply(@, [restoreOriginalValue, ctrlDown, callback]))
+      @instance.releaseEditLock(@, => original.apply(@, [restoreOriginalValue, ctrlDown, callback]))
     else
       original.apply(@, arguments)
 

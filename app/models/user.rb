@@ -4,7 +4,7 @@ class User
 
   before_destroy :unlock_cell
 
-  def lock_cells(location)
+  def lock_cell(location)
     NoBrainer.run do |r|
       SpreadsheetCell.rql_table
         .get(location)
